@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">dreampad</string>
+
+    <string name="forgot_password">FORGOT PASSWORD ?</string>
+    <string name="submit">SUBMIT</string>
+    <string name="forget_text">Enter your email address below and we will send you an email with the steps to reset your password.</string>
+    <string name="back_to_sign_in">Back to Sign In</string>
+    <string name="confirm_code_txt">Enter the code you have received by mail in order to verify your account.</string>
+    <string name="confirm_code">CONFIRM CODE</string>
+    <string name="email_address">EMAIL ADDRESS</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="code">CODE</string>
+</resources>
