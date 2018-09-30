@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/darkcolour"
+    android:gravity="center|top"
+    tools:context=".voiceTesting.VoiceTestDisplayAnalysedData">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="78dp">
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="100dp"
+            android:layout_height="78dp"
+            android:paddingTop="10dp"
+            android:src="@drawable/back"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="40dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/wordscaptured1"
+            android:gravity="left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sentence : "
+            android:fontFamily="@font/lato_regular"
+            android:textColor="@android:color/white"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/sentence"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="100dp"
+            android:gravity="center"
+            android:background="@drawable/only_border"
+            android:textColor="@android:color/white"
+            android:text="Pronounced sentence"
+            android:textSize="19dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/wordscaptured2"
+            android:gravity="left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Meaningful Words : "
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/lato_regular"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/meaningfuls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No of meaningful words"
+            android:textColor="@color/display_txt_colour"
+            android:textSize="19dp"
+            />
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/repetitivewordviewbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="View Repetitive Words"
+        android:textStyle="bold"
+        android:background="@drawable/txtview_shapes"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/lato_light"
+        android:gravity="center"
+        android:textColor="@color/display_txt_colour"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"/>
+
+</LinearLayout>

@@ -120,6 +120,7 @@ public class EyeTest extends AppCompatActivity implements CameraBridgeViewBase.C
     TextView LeftCountDisplayTopView,RightCountDisplayTopView ;
     TextView LeftCountView ,RightCountView;
     ProgressBar LeftBar,RightBar;
+    String Type ="";
     static {
         if(OpenCVLoader.initDebug()){
             Log.e(TAG,"OpenCv loaded");
@@ -196,14 +197,52 @@ public class EyeTest extends AppCompatActivity implements CameraBridgeViewBase.C
         }
     };
     int count = 0;
-    private int[] textureArrayWin = {
-            R.drawable.back,
-            R.drawable.email,
-            R.drawable.close,
-            R.drawable.info,
-            R.drawable.password,
+//    private int[] textureArrayWin = {
+//            R.drawable.back,
+//            R.drawable.email,
+//            R.drawable.close,
+//            R.drawable.info,
+//            R.drawable.password,
+//
+//    };
+    int[] AtusticImageArray;
+    int[] NonAtusticImageArray;
+
+    private int[] AtusticVehicalImageArray = {
+            R.drawable.airplane,
+            R.drawable.ambulance,
+            R.drawable.bus,
+            R.drawable.fire,
+            R.drawable.hitruck,
 
     };
+    private int[] NonAtusticVehicalImageArray = {
+            R.drawable.bomb2,
+            R.drawable.miletary,
+            R.drawable.planes,
+            R.drawable.taxi,
+            R.drawable.trucks2,
+
+    };
+
+    private int[] AtusticAnimalImageArray = {
+            R.drawable.baw,
+            R.drawable.dina,
+            R.drawable.dolphin,
+            R.drawable.gem,
+            R.drawable.panda,
+
+    };
+    private int[] NonAtusticAnimalImageArray = {
+            R.drawable.dinas,
+            R.drawable.dogs,
+            R.drawable.frog,
+            R.drawable.fish,
+            R.drawable.rep1,
+
+    };
+
+
     //Styling for double press back button
     private static long back_pressed;
 
@@ -234,6 +273,17 @@ public class EyeTest extends AppCompatActivity implements CameraBridgeViewBase.C
         StartButton = (TextView) findViewById(R.id.StartButton_click);
         CoordinatesValues = (TextView)findViewById(R.id.coordinates);
         mOpenCvCameraView.setCvCameraViewListener(this);
+
+        // passing the info
+        Bundle args = getIntent().getParcelableExtra("bundle");
+
+        Type = args.getString("Type");
+        // select imagesetOnType
+        selectionAsType(Type);
+
+
+
+
         StartButton.setTextColor(getResources().getColor(R.color.red));
         StartButton.setEnabled(false);
         StartButton.setClickable(false);
@@ -287,19 +337,19 @@ public class EyeTest extends AppCompatActivity implements CameraBridgeViewBase.C
                                 StartButtonClick();
                                 if(IsStartButtonPress == true){
                                     if(XCoordinate<XCoordinateWenStartClicked){
-                                        Rightview.setTextColor(getResources().getColor(R.color.red));
+                                        Rightview.setTextColor(getResources().getColor(R.color.green));
                                         IsRight = true;
                                         Isleft = false;
-                                        Leftview.setTextColor(getResources().getColor(R.color.white_color));
+                                        Leftview.setTextColor(getResources().getColor(R.color.red));
                                     }else {
                                         IsRight = false;
                                         Isleft = true;
-                                        Leftview.setTextColor(getResources().getColor(R.color.red));
-                                        Rightview.setTextColor(getResources().getColor(R.color.white_color));
+                                        Leftview.setTextColor(getResources().getColor(R.color.green));
+                                        Rightview.setTextColor(getResources().getColor(R.color.red));
                                     }
                                 }
                             }else {
-                                StartButton.setTextColor(getResources().getColor(R.color.red));
+                                StartButton.setTextColor(getResources().getColor(R.color.green));
                                 StartButton.setEnabled(false);
                                 StartButton.setClickable(false);
                                 StartButton.setFocusable(false);
@@ -309,8 +359,8 @@ public class EyeTest extends AppCompatActivity implements CameraBridgeViewBase.C
                             IsRight = false;
                             Isleft = false;
                             CoordinatesValues.setText(String .valueOf(XCoordinate));
-                            Leftview.setTextColor(getResources().getColor(R.color.white_color ));
-                            Rightview.setTextColor(getResources().getColor(R.color.white_color));
+                            Leftview.setTextColor(getResources().getColor(R.color.red ));
+                            Rightview.setTextColor(getResources().getColor(R.color.red));
                         }
 
 
@@ -354,7 +404,7 @@ public class EyeTest extends AppCompatActivity implements CameraBridgeViewBase.C
                         }else {
                             LeftImageClick ++;
                             count ++;
-                            Image1.setImageResource(getRandom(textureArrayWin));
+                            Image1.setImageResource(getRandom(AtusticImageArray));
                             String NetcountDisp = "Net Count : "+count;
                             String LeftCountv = "Left Count : " +LeftImageClick;
                             CountDisplay.setText(NetcountDisp);
@@ -405,7 +455,7 @@ public class EyeTest extends AppCompatActivity implements CameraBridgeViewBase.C
 
                             RightImageClick ++;
                             count ++;
-                            Image3.setImageResource(getRandom(textureArrayWin));
+                            Image3.setImageResource(getRandom(NonAtusticImageArray));
                             String NetcountDisp = "Net Count : "+count;
                             String RightCountv = "Right Count : " +RightImageClick;
                             CountDisplay.setText(NetcountDisp);
@@ -475,6 +525,20 @@ public class EyeTest extends AppCompatActivity implements CameraBridgeViewBase.C
             }
         });
     }
+    public void selectionAsType(String Type){
+        if(Type.equals("Vehicles")){
+            AtusticImageArray = AtusticVehicalImageArray;
+            NonAtusticImageArray = NonAtusticVehicalImageArray;
+            Image1.setImageResource(R.drawable.airplane);
+            Image3.setImageResource(R.drawable.planes);
+        }
+        if(Type.equals("Animals")){
+            AtusticImageArray = AtusticAnimalImageArray;
+            NonAtusticImageArray = NonAtusticAnimalImageArray;
+            Image1.setImageResource(R.drawable.baw);
+            Image3.setImageResource(R.drawable.frog);
+        }
+    }
     public void buttonClicks(){
         // close button press
         closeClick.setOnClickListener(new View.OnClickListener() {
@@ -488,30 +552,8 @@ public class EyeTest extends AppCompatActivity implements CameraBridgeViewBase.C
 
             }
         });
-        // image1  button press
-        Image1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                count = count+1;
-                if(count == 10){
-                    Intent intent = new Intent(EyeTest.this,EyeTestResult.class);
-                    startActivity(intent);
-                    finish();
-                }else{
-                    String countDisp = "Count : "+count;
-                    CountDisplay.setText(countDisp);
-                    Image1.setImageResource(getRandom(textureArrayWin));
-//                    Image2.setImageResource(getRandom(textureArrayWin));
-                    Image3.setImageResource(getRandom(textureArrayWin));
-//                    Image4.setImageResource(getRandom(textureArrayWin));
-                }
-
-
-
-            }
-        });
-//        // image2  button press
-//        Image2.setOnClickListener(new View.OnClickListener() {
+//        // image1  button press
+//        Image1.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
 //                count = count+1;
@@ -523,33 +565,55 @@ public class EyeTest extends AppCompatActivity implements CameraBridgeViewBase.C
 //                    String countDisp = "Count : "+count;
 //                    CountDisplay.setText(countDisp);
 //                    Image1.setImageResource(getRandom(textureArrayWin));
-//                    Image2.setImageResource(getRandom(textureArrayWin));
+////                    Image2.setImageResource(getRandom(textureArrayWin));
 //                    Image3.setImageResource(getRandom(textureArrayWin));
-//                    Image4.setImageResource(getRandom(textureArrayWin));
+////                    Image4.setImageResource(getRandom(textureArrayWin));
 //                }
+//
+//
 //
 //            }
 //        });
-        // image3  button press
-        Image3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                count = count+1;
-                if(count == 10){
-                    Intent intent = new Intent(EyeTest.this,EyeTestResult.class);
-                    startActivity(intent);
-                    finish();
-                }else{
-
-                    String countDisp = "Count : "+count;
-                    CountDisplay.setText(countDisp);
-                    Image1.setImageResource(getRandom(textureArrayWin));
-//                    Image2.setImageResource(getRandom(textureArrayWin));
-                    Image3.setImageResource(getRandom(textureArrayWin));
-//                    Image4.setImageResource(getRandom(textureArrayWin));
-                }
-            }
-        });
+////        // image2  button press
+////        Image2.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View v) {
+////                count = count+1;
+////                if(count == 10){
+////                    Intent intent = new Intent(EyeTest.this,EyeTestResult.class);
+////                    startActivity(intent);
+////                    finish();
+////                }else{
+////                    String countDisp = "Count : "+count;
+////                    CountDisplay.setText(countDisp);
+////                    Image1.setImageResource(getRandom(textureArrayWin));
+////                    Image2.setImageResource(getRandom(textureArrayWin));
+////                    Image3.setImageResource(getRandom(textureArrayWin));
+////                    Image4.setImageResource(getRandom(textureArrayWin));
+////                }
+////
+////            }
+////        });
+//        // image3  button press
+//        Image3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                count = count+1;
+//                if(count == 10){
+//                    Intent intent = new Intent(EyeTest.this,EyeTestResult.class);
+//                    startActivity(intent);
+//                    finish();
+//                }else{
+//
+//                    String countDisp = "Count : "+count;
+//                    CountDisplay.setText(countDisp);
+//                    Image1.setImageResource(getRandom(textureArrayWin));
+////                    Image2.setImageResource(getRandom(textureArrayWin));
+//                    Image3.setImageResource(getRandom(textureArrayWin));
+////                    Image4.setImageResource(getRandom(textureArrayWin));
+//                }
+//            }
+//        });
 //        // image4  button press
 //        Image4.setOnClickListener(new View.OnClickListener() {
 //            @Override

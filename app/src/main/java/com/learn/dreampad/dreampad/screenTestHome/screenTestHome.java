@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.learn.dreampad.dreampad.Eyetest.EyeTestSelection;
 import com.learn.dreampad.dreampad.Login;
 import com.learn.dreampad.dreampad.R;
+import com.learn.dreampad.dreampad.voiceTesting.VoiceTestMain;
 
 public class screenTestHome extends AppCompatActivity {
     TextView EyeTest, RespondTest,VoiceTest;
@@ -62,8 +63,8 @@ public class screenTestHome extends AppCompatActivity {
         VoiceTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(screenTestHome.this,EyeTestSelection.class);
-//                startActivity(intent);
+                Intent intent = new Intent(screenTestHome.this,VoiceTestMain.class);
+                startActivity(intent);
 
 
 

@@ -94,7 +94,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="5">
                     <RelativeLayout
-                        android:background="@color/colorPrimary"
+                        android:background="@color/white_color"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="0.5">
@@ -103,7 +103,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:paddingTop="10dp"
-                            android:src="@drawable/back"/>
+                            />
                         <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
@@ -159,12 +159,13 @@
                     <!--</LinearLayout>-->
                 </LinearLayout>
                 <LinearLayout
+                    android:background="@color/white_color"
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="5">
                     <RelativeLayout
                         android:gravity="right"
-                        android:background="@color/colorAccent"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="0.5">
@@ -173,7 +174,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:paddingTop="10dp"
-                            android:src="@drawable/back"/>
+                            />
                         <RelativeLayout
                             android:gravity="end"
                             android:layout_width="match_parent"
@@ -257,7 +258,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textColor="@color/white_color"
+                android:textColor="@android:color/black"
                 android:id="@+id/coordinates"/>
 
             <LinearLayout

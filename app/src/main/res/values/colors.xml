@@ -15,7 +15,7 @@
     <color name="grey_color">#cccccc</color>
     <color name="grey_box">#e8e8e8</color>
     <color name="grey_rate">#b2b3b3</color>
-
+    <color name="view_colour">#64d4db</color>
 
     <color name="under_line">#7b7b7b</color>
     <!--<color name="card_back">#01202F</color>-->

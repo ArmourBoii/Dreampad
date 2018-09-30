@@ -75,6 +75,28 @@ public class EyeTestSelection extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EyeTestSelection.this,EyeTest.class);
+                Bundle args = new Bundle();
+
+                args.putString("Type", "Vehicles");
+
+                intent.putExtra("bundle", args);
+                startActivity(intent);
+                finish();
+
+
+
+            }
+        });
+        // Animals button press
+        Animals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EyeTestSelection.this,EyeTest.class);
+                Bundle args = new Bundle();
+
+                args.putString("Type", "Animals");
+
+                intent.putExtra("bundle", args);
                 startActivity(intent);
                 finish();
 
